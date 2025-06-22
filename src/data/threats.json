@@ -1,0 +1,285 @@
+
+{
+  "automation": {
+    "keywords": ["automation", "iot", "scada", "plc", "industrial", "control", "manufacturing", "robotics", "sensor", "actuator", "hmi", "dcs"],
+    "threats": [
+      {
+        "id": "AUTO_001",
+        "name": "Unauthorized Remote Access",
+        "description": "Attackers gain unauthorized remote access to industrial control systems through weak authentication or exposed interfaces.",
+        "severity": "High",
+        "mitigation": "Implement strong multi-factor authentication, VPN access controls, and network segmentation for industrial systems."
+      },
+      {
+        "id": "AUTO_002", 
+        "name": "Malware Injection via USB",
+        "description": "Malicious software introduced through USB devices or removable media targeting industrial systems.",
+        "severity": "High",
+        "mitigation": "Disable USB ports on critical systems, implement application whitelisting, and use endpoint detection solutions."
+      },
+      {
+        "id": "AUTO_003",
+        "name": "Man-in-the-Middle Attacks",
+        "description": "Interception and manipulation of communication between industrial devices and control systems.",
+        "severity": "Medium",
+        "mitigation": "Use encrypted communication protocols, implement certificate-based authentication, and monitor network traffic."
+      },
+      {
+        "id": "AUTO_004",
+        "name": "Firmware Tampering",
+        "description": "Unauthorized modification of device firmware to alter functionality or create backdoors.",
+        "severity": "High",
+        "mitigation": "Implement secure boot processes, firmware integrity checking, and maintain updated firmware versions."
+      },
+      {
+        "id": "AUTO_005",
+        "name": "DoS on Critical Systems",
+        "description": "Denial of service attacks targeting critical automation infrastructure causing operational disruption.",
+        "severity": "Critical",
+        "mitigation": "Implement redundant systems, rate limiting, and network monitoring with automated failover mechanisms."
+      },
+      {
+        "id": "AUTO_006",
+        "name": "Insecure Default Configurations",
+        "description": "Systems deployed with default passwords and insecure configurations.",
+        "severity": "Medium",
+        "mitigation": "Change all default credentials, implement security hardening guides, and conduct regular security audits."
+      }
+    ]
+  },
+  "ecommerce": {
+    "keywords": ["ecommerce", "online store", "shopping", "payment", "transaction", "retail", "marketplace", "cart", "checkout", "merchant", "inventory"],
+    "threats": [
+      {
+        "id": "ECOM_001",
+        "name": "Payment Card Data Theft",
+        "description": "Attackers steal credit card information during payment processing or from stored databases.",
+        "severity": "Critical",
+        "mitigation": "Implement PCI DSS compliance, use tokenization, encrypt card data, and never store sensitive payment information."
+      },
+      {
+        "id": "ECOM_002",
+        "name": "SQL Injection Attacks",
+        "description": "Malicious SQL queries injected through input fields to access or manipulate database information.",
+        "severity": "High",
+        "mitigation": "Use parameterized queries, input validation, and implement web application firewalls (WAF)."
+      },
+      {
+        "id": "ECOM_003",
+        "name": "Cross-Site Scripting (XSS)",
+        "description": "Malicious scripts injected into web pages to steal user sessions or redirect to malicious sites.",
+        "severity": "Medium",
+        "mitigation": "Implement content security policy (CSP), input sanitization, and output encoding for all user inputs."
+      },
+      {
+        "id": "ECOM_004",
+        "name": "Account Takeover",
+        "description": "Unauthorized access to customer accounts through credential stuffing or weak authentication.",
+        "severity": "High",
+        "mitigation": "Implement multi-factor authentication, account lockout policies, and monitor for suspicious login patterns."
+      },
+      {
+        "id": "ECOM_005",
+        "name": "Inventory Manipulation",
+        "description": "Attackers manipulate product prices, quantities, or availability to exploit the system.",
+        "severity": "Medium",
+        "mitigation": "Implement proper authorization controls, audit trails, and real-time inventory monitoring systems."
+      },
+      {
+        "id": "ECOM_006",
+        "name": "Session Hijacking",
+        "description": "Attackers steal session tokens to impersonate legitimate users and make unauthorized purchases.",
+        "severity": "High",
+        "mitigation": "Use secure session management, HTTPS encryption, and implement session timeout policies."
+      }
+    ]
+  },
+  "cloud": {
+    "keywords": ["cloud", "aws", "azure", "gcp", "docker", "kubernetes", "container", "serverless", "microservices", "devops", "infrastructure"],
+    "threats": [
+      {
+        "id": "CLOUD_001",
+        "name": "Misconfigured Storage Buckets",
+        "description": "Cloud storage containers left open to public access exposing sensitive data.",
+        "severity": "Critical",
+        "mitigation": "Implement proper access controls, regular configuration audits, and use cloud security posture management tools."
+      },
+      {
+        "id": "CLOUD_002",
+        "name": "Insecure APIs",
+        "description": "Poorly secured APIs allowing unauthorized access to cloud services and data.",
+        "severity": "High",
+        "mitigation": "Implement API authentication, rate limiting, input validation, and regular security testing of APIs."
+      },
+      {
+        "id": "CLOUD_003",
+        "name": "Container Escape",
+        "description": "Attackers break out of containerized environments to access the host system.",
+        "severity": "High",
+        "mitigation": "Use minimal base images, implement runtime security monitoring, and follow container security best practices."
+      },
+      {
+        "id": "CLOUD_004",
+        "name": "IAM Privilege Escalation",
+        "description": "Attackers exploit identity and access management misconfigurations to gain elevated privileges.",
+        "severity": "High",
+        "mitigation": "Implement principle of least privilege, regular IAM audits, and use just-in-time access controls."
+      },
+      {
+        "id": "CLOUD_005",
+        "name": "Data Exfiltration",
+        "description": "Unauthorized transfer of sensitive data from cloud environments to external locations.",
+        "severity": "Critical",
+        "mitigation": "Implement data loss prevention (DLP), network monitoring, and encrypt data at rest and in transit."
+      },
+      {
+        "id": "CLOUD_006",
+        "name": "Supply Chain Attacks",
+        "description": "Compromise through third-party dependencies, container images, or cloud service providers.",
+        "severity": "Medium",
+        "mitigation": "Implement dependency scanning, use trusted registries, and maintain software bill of materials (SBOM)."
+      }
+    ]
+  },
+  "healthcare": {
+    "keywords": ["healthcare", "medical", "patient", "hospital", "clinic", "ehr", "emr", "hipaa", "pii", "phi", "diagnosis", "treatment"],
+    "threats": [
+      {
+        "id": "HEALTH_001",
+        "name": "PHI Data Breach",
+        "description": "Unauthorized access or disclosure of protected health information violating HIPAA regulations.",
+        "severity": "Critical",
+        "mitigation": "Implement encryption, access controls, audit logging, and HIPAA compliance training for all staff."
+      },
+      {
+        "id": "HEALTH_002",
+        "name": "Ransomware Attacks",
+        "description": "Malware that encrypts medical systems and data, demanding payment for restoration.",
+        "severity": "Critical",
+        "mitigation": "Implement regular backups, network segmentation, endpoint protection, and incident response plans."
+      },
+      {
+        "id": "HEALTH_003",
+        "name": "Medical Device Hijacking",
+        "description": "Attackers compromise connected medical devices to alter functionality or steal data.",
+        "severity": "High",
+        "mitigation": "Implement device authentication, network isolation, and regular security updates for medical devices."
+      },
+      {
+        "id": "HEALTH_004",
+        "name": "Insider Threats",
+        "description": "Healthcare employees misusing access privileges to steal or alter patient information.",
+        "severity": "Medium",
+        "mitigation": "Implement role-based access controls, user activity monitoring, and regular access reviews."
+      },
+      {
+        "id": "HEALTH_005",
+        "name": "EHR System Vulnerabilities",
+        "description": "Security flaws in Electronic Health Record systems allowing unauthorized access.",
+        "severity": "High",
+        "mitigation": "Regular security patching, vulnerability assessments, and implement defense-in-depth strategies."
+      },
+      {
+        "id": "HEALTH_006",
+        "name": "Social Engineering",
+        "description": "Attackers manipulate healthcare staff to gain unauthorized access to systems or information.",
+        "severity": "Medium",
+        "mitigation": "Implement security awareness training, verification procedures, and incident reporting mechanisms."
+      }
+    ]
+  },
+  "messaging": {
+    "keywords": ["messaging", "chat", "communication", "email", "sms", "notification", "instant", "telegram", "slack", "discord", "whatsapp"],
+    "threats": [
+      {
+        "id": "MSG_001",
+        "name": "Message Interception",
+        "description": "Attackers intercept and read private messages during transmission or storage.",
+        "severity": "High",
+        "mitigation": "Implement end-to-end encryption, secure key exchange protocols, and forward secrecy mechanisms."
+      },
+      {
+        "id": "MSG_002",
+        "name": "Account Impersonation",
+        "description": "Attackers create fake accounts or compromise existing ones to impersonate users.",
+        "severity": "Medium",
+        "mitigation": "Implement identity verification, multi-factor authentication, and user reporting mechanisms."
+      },
+      {
+        "id": "MSG_003",
+        "name": "Malware Distribution",
+        "description": "Malicious files or links spread through messaging platforms to infect user devices.",
+        "severity": "High",
+        "mitigation": "Implement file scanning, link analysis, and user education about suspicious content."
+      },
+      {
+        "id": "MSG_004",
+        "name": "Spam and Phishing",
+        "description": "Unwanted messages containing fraudulent content designed to steal credentials or money.",
+        "severity": "Medium",
+        "mitigation": "Implement spam filtering, content analysis, and user reporting tools for suspicious messages."
+      },
+      {
+        "id": "MSG_005",
+        "name": "Data Retention Violations",
+        "description": "Improper storage or retention of messages violating privacy regulations.",
+        "severity": "Medium",
+        "mitigation": "Implement data retention policies, automatic deletion, and compliance with privacy regulations."
+      },
+      {
+        "id": "MSG_006",
+        "name": "Server-Side Attacks",
+        "description": "Attackers compromise messaging servers to access all user communications.",
+        "severity": "Critical",
+        "mitigation": "Implement server hardening, intrusion detection systems, and distributed architecture for resilience."
+      }
+    ]
+  },
+  "general": {
+    "keywords": ["software", "application", "system", "platform", "web", "mobile", "desktop", "database", "network", "security"],
+    "threats": [
+      {
+        "id": "GEN_001",
+        "name": "Weak Authentication",
+        "description": "Systems using weak passwords, default credentials, or inadequate authentication mechanisms.",
+        "severity": "High",
+        "mitigation": "Implement strong password policies, multi-factor authentication, and regular credential audits."
+      },
+      {
+        "id": "GEN_002",
+        "name": "Unpatched Vulnerabilities",
+        "description": "Known security vulnerabilities in software components that remain unpatched.",
+        "severity": "High",
+        "mitigation": "Implement regular patching schedules, vulnerability scanning, and maintain software inventory."
+      },
+      {
+        "id": "GEN_003",
+        "name": "Data Encryption Failures",
+        "description": "Sensitive data stored or transmitted without proper encryption protection.",
+        "severity": "Medium",
+        "mitigation": "Implement encryption for data at rest and in transit, use strong encryption algorithms and key management."
+      },
+      {
+        "id": "GEN_004",
+        "name": "Insufficient Logging",
+        "description": "Inadequate logging and monitoring making it difficult to detect security incidents.",
+        "severity": "Medium",
+        "mitigation": "Implement comprehensive logging, security monitoring, and incident detection systems."
+      },
+      {
+        "id": "GEN_005",
+        "name": "Privilege Escalation",
+        "description": "Attackers gain higher-level permissions than intended through system vulnerabilities.",
+        "severity": "High",
+        "mitigation": "Implement principle of least privilege, regular access reviews, and privilege monitoring systems."
+      },
+      {
+        "id": "GEN_006",
+        "name": "Input Validation Failures",
+        "description": "Applications failing to properly validate user input leading to various attack vectors.",
+        "severity": "Medium",
+        "mitigation": "Implement comprehensive input validation, sanitization, and output encoding practices."
+      }
+    ]
+  }
+}
