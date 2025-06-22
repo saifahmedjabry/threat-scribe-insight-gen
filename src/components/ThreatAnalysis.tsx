@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { AlertTriangle, Download, Shield, FileText, Code } from 'lucide-react';
 import { ThreatAnalyzer, AnalysisResult, ThreatsData } from '@/utils/threatAnalyzer';
 import threatsData from '@/data/threats.json';
+import jsPDF from 'jspdf';
 
 const ThreatAnalysis = () => {
   const [description, setDescription] = useState('');
@@ -30,16 +31,94 @@ const ThreatAnalysis = () => {
   const downloadReport = () => {
     if (!analysis) return;
     
-    const report = analyzer.generateReport(analysis, description);
-    const blob = new Blob([report], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `threatscope-report-${Date.now()}.md`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 20;
+    let yPosition = 30;
+
+    // Title
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.text('ThreatScope Analysis Report', margin, yPosition);
+    yPosition += 20;
+
+    // Timestamp
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`Generated: ${new Date().toISOString()}`, margin, yPosition);
+    yPosition += 20;
+
+    // Project Description
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Project Description', margin, yPosition);
+    yPosition += 10;
+    
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    const splitDescription = doc.splitTextToSize(description, pageWidth - 2 * margin);
+    doc.text(splitDescription, margin, yPosition);
+    yPosition += splitDescription.length * 5 + 10;
+
+    // Analysis Summary
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Analysis Summary', margin, yPosition);
+    yPosition += 10;
+    
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`Detected Category: ${analysis.category.toUpperCase()}`, margin, yPosition);
+    yPosition += 7;
+    doc.text(`Confidence Level: ${(analysis.confidence * 100).toFixed(1)}%`, margin, yPosition);
+    yPosition += 7;
+    doc.text(`Threats Identified: ${analysis.threats.length}`, margin, yPosition);
+    yPosition += 15;
+
+    // Threats
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Identified Threats', margin, yPosition);
+    yPosition += 15;
+
+    analysis.threats.forEach((threat, index) => {
+      // Check if we need a new page
+      if (yPosition > 250) {
+        doc.addPage();
+        yPosition = 30;
+      }
+
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.text(`${index + 1}. ${threat.name}`, margin, yPosition);
+      yPosition += 10;
+
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`Threat ID: ${threat.id}`, margin, yPosition);
+      yPosition += 6;
+      doc.text(`Severity: ${threat.severity}`, margin, yPosition);
+      yPosition += 10;
+
+      doc.setFont('helvetica', 'bold');
+      doc.text('Description:', margin, yPosition);
+      yPosition += 6;
+      doc.setFont('helvetica', 'normal');
+      const splitDesc = doc.splitTextToSize(threat.description, pageWidth - 2 * margin);
+      doc.text(splitDesc, margin, yPosition);
+      yPosition += splitDesc.length * 5 + 5;
+
+      doc.setFont('helvetica', 'bold');
+      doc.text('Recommended Mitigation:', margin, yPosition);
+      yPosition += 6;
+      doc.setFont('helvetica', 'normal');
+      const splitMitigation = doc.splitTextToSize(threat.mitigation, pageWidth - 2 * margin);
+      doc.text(splitMitigation, margin, yPosition);
+      yPosition += splitMitigation.length * 5 + 15;
+    });
+
+    // Save the PDF
+    doc.save(`threatscope-report-${Date.now()}.pdf`);
   };
 
   const downloadCLI = () => {
@@ -250,7 +329,7 @@ if __name__ == "__main__":
                     className="bg-green-600 hover:bg-green-700"
                   >
                     <Download className="h-4 w-4 mr-2" />
-                    Download Report
+                    Download PDF Report
                   </Button>
                 </CardTitle>
               </CardHeader>
