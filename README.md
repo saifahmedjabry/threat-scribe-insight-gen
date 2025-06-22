@@ -1,68 +1,112 @@
-# Welcome to your Lovable project
+🛡️ ThreatScope AI – Generative Threat Insight Engine
+ThreatScope AI is a generative cybersecurity tool that identifies and analyzes security threats based on a free-text description of any system or application. Using domain-specific keyword classification, it automatically detects the system’s sector (e.g., automation, ecommerce, healthcare, messaging, cloud) and provides high-relevance threats and actionable mitigation strategies.
 
-## Project info
+ThreatScope features a modern React frontend, a JSON-driven threat intelligence engine, and support for exporting CLI tools and Markdown reports — making it ideal for developers, DevOps teams, and security practitioners.
 
-**URL**: https://lovable.dev/projects/6deccb17-b8f3-4f50-99ca-6835ccf32c5c
+🚀 Features
 
-## How can I edit this code?
+AI-style domain classification using keyword detection
 
-There are several ways of editing your application.
+Curated threat intelligence mapped to industry domains
 
-**Use Lovable**
+Real-time threat generation with severity labels
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6deccb17-b8f3-4f50-99ca-6835ccf32c5c) and start prompting.
+Matching mitigation strategies for each identified threat
 
-Changes made via Lovable will be committed automatically to this repo.
+Confidence score for category classification
 
-**Use your preferred IDE**
+Markdown report export
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Downloadable Python CLI version with full offline support
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+🧠 How It Works
 
-Follow these steps:
+The user enters a free-text description of their application or system.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+The engine matches keywords across six predefined categories: automation, ecommerce, healthcare, messaging, cloud, and general.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+The category with the highest keyword match is selected.
 
-# Step 3: Install the necessary dependencies.
-npm i
+3–6 domain-specific threats and their mitigations are randomly selected and returned, each with:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Unique threat ID
+
+Severity level (Critical, High, Medium)
+
+Description of the threat
+
+Suggested mitigation
+
+The results can be exported as a CLI tool or Markdown report.
+
+🧪 Example
+
+Input:
+“We’re developing a messaging platform with encrypted chat, cloud file sharing, and multi-device access.”
+
+Detected Category: Messaging
+Confidence Score: 83%
+Threats Identified:
+
+MSG_001 – Message Interception (High)
+
+MSG_002 – Account Impersonation (Medium)
+
+MSG_006 – Server-Side Attacks (Critical)
+
+🗂 Project Structure
+
+/data
+  threats.json – All threats + mitigations grouped by category
+/components
+  ThreatAnalysis.tsx – Main UI component
+/utils
+  threatAnalyzer.ts – Core analysis and classification logic
+
+⚙️ Tech Stack
+
+React + TypeScript
+
+TailwindCSS + Lucide Icons
+
+JSON-based threat engine
+
+Python (for CLI export)
+
+🛠 Setup
+
+Clone the repository:
+git clone https://github.com/saifahmedjabry/threat-scribe-insight-gen
+cd threat-scribe-insight-gen
+
+Install dependencies:
+npm install
+
+Run the development server:
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+📦 CLI Tool Export
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Click “Download CLI Tool” to generate:
 
-**Use GitHub Codespaces**
+threatscope.py – standalone Python script
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+threats.json – full JSON threat database
 
-## What technologies are used for this project?
+Run the CLI version using:
+python threatscope.py
 
-This project is built with:
+📄 License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+MIT License. Open source and available for educational, personal, and non-commercial use.
 
-## How can I deploy this project?
+🙌 Built for Hackathon
 
-Simply open [Lovable](https://lovable.dev/projects/6deccb17-b8f3-4f50-99ca-6835ccf32c5c) and click on Share -> Publish.
+ThreatScope AI was created to make automated threat modeling accessible, fast, and intuitive. It helps developers and security engineers quickly understand potential risks in their systems — with zero setup and fully generative output.
+
+Built with ❤️ for security-focused innovation.
+
+
 
 ## Can I connect a custom domain to my Lovable project?
 
