@@ -142,6 +142,94 @@ const ThreatAnalysis = () => {
                 Download CLI Tool
               </Button>
             </div>
+
+            {/* CLI Preview Boxes */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+              <Card className="bg-slate-700/30 border-slate-600/50">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-sm text-blue-400 flex items-center gap-2">
+                    <Code className="h-4 w-4" />
+                    threatscope.py
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <pre className="text-xs text-gray-300 overflow-x-auto">
+                    <code>{`#!/usr/bin/env python3
+"""
+ThreatScope - Cybersecurity Threat Analysis CLI Tool
+"""
+
+import json
+import random
+import sys
+
+class ThreatAnalyzer:
+    def __init__(self, threats_file='threats.json'):
+        with open(threats_file, 'r') as f:
+            self.threats_data = json.load(f)
+    
+    def analyze_description(self, description):
+        # Keyword matching logic
+        normalized = description.lower()
+        best_match = 'general'
+        
+        for category, data in self.threats_data.items():
+            score = sum(1 for keyword in data['keywords'] 
+                       if keyword.lower() in normalized)
+        
+        return self._get_random_threats(best_match)
+
+def main():
+    analyzer = ThreatAnalyzer()
+    # ... analysis logic
+    
+if __name__ == "__main__":
+    main()`}</code>
+                  </pre>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-slate-700/30 border-slate-600/50">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-sm text-green-400 flex items-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    threats.json
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <pre className="text-xs text-gray-300 overflow-x-auto">
+                    <code>{`{
+  "automation": {
+    "keywords": [
+      "automation", "iot", "scada", 
+      "plc", "industrial", "control"
+    ],
+    "threats": [
+      {
+        "id": "AUTO_001",
+        "name": "Unauthorized Remote Access",
+        "description": "Attackers gain access...",
+        "severity": "High",
+        "mitigation": "Implement MFA and..."
+      },
+      {
+        "id": "AUTO_002",
+        "name": "Malware Injection via USB",
+        "description": "Malicious software...",
+        "severity": "High",
+        "mitigation": "Disable USB ports..."
+      }
+    ]
+  },
+  "ecommerce": {
+    "keywords": ["ecommerce", "payment"],
+    "threats": [...]
+  }
+}`}</code>
+                  </pre>
+                </CardContent>
+              </Card>
+            </div>
           </CardContent>
         </Card>
 
